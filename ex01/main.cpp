@@ -8,7 +8,12 @@ void input_handle(const std::string &input)
     }
     else if (input == "SEARCH")
     {
-        display_contacts();
+        PhoneBook phonebook;
+        int indx;
+        std::cout << "Please input the index of the contact you want to display: " << std::endl;
+        std::cin >> indx;
+        phonebook.search_contact(indx);
+        phonebook.display_contact();
     }
     else if (input == "EXIT")
     {
