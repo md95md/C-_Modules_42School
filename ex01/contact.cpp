@@ -5,7 +5,7 @@ void load_contact()
     std::ifstream infile("contacts.txt");
     if (!infile)
     {
-        std::cout << MAGENTA << "\nPhonebook is empty :(" << END << std::endl;
+        std::cout << MAGENTA << "\nPhonebook is empty\n" << END << std::endl;
         return;
     }
     phonebook.contact_count = 0;
@@ -59,7 +59,7 @@ void Contact::contact_info() const{
 void PhoneBook::search_contact(int indx){
     if (indx < 0 || indx >= contact_count)
     {
-        std::cout << MAGENTA << "There is no contact at this index yet :(\n Use ADD to add more!\n" << END << std::endl;
+        std::cout << MAGENTA << "There is no contact at this index\n" << END;
         return;
     }
     contacts[indx].contact_info();

@@ -16,7 +16,6 @@ CC          =   g++
 
 RM          =   rm -rf
 
-# Цвета
 CYAN        =   \033[1;36m
 MAGENTA     =   \033[1;35m
 GREEN       =   \033[1;32m
@@ -30,11 +29,9 @@ all         :   $(NAME)
 $(NAME)     :   $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS)
 
-# Компиляция .o файлов в папку build/
 $(OBJ_DIR)/%.o : %.cpp $(HEADER) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-# Создание папки для объектных файлов
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 

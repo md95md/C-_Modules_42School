@@ -15,8 +15,6 @@ void search_contact(int indx);
 void load_contact();
 void save_contact();
 
-// extern PhoneBook g_phonebook;
-
 class Contact{
     public:
     int index;

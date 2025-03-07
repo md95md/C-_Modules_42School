@@ -22,13 +22,13 @@ void please_input_contact()
     phonebook.contacts[phonebook.contact_count] = new_contact;
     phonebook.contact_count++;
     save_contact();
-    std::cout << CYAN << "Contact added successfully! :)" << END << std::endl;
+    std::cout << CYAN << "Contact added successfully!" << END << std::endl;
 }
 
 void exit_and_clean_all()
 {
     if (std::remove("contacts.txt") == 0) {
-        std::cout << CYAN << "\nPhonebook deleted successfully! :)" << END << std::endl;
+        std::cout << CYAN << "\nPhonebook deleted successfully!" << END << std::endl;
     } else {
         std::cout << MAGENTA << "Error deleting phonebook" << END << std::endl;
     }
