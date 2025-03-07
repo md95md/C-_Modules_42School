@@ -16,7 +16,6 @@ void load_contact()
         std::getline(infile, temp.nickname);
         std::getline(infile, temp.phone_number);
         std::getline(infile, temp.darkest_secret);
-        // Если первая строка пустая – скорее всего, достигнут конец файла
         if (temp.first_name == "")
             break;
         temp.index = phonebook.contact_count;
@@ -31,7 +30,6 @@ void save_contact(){
     if (!outfile)
         return;
     for (int i = 0; i < phonebook.contact_count; i++) {
-        // Каждое поле записываем в отдельной строке
         Contact c = phonebook.contacts[i];
         outfile << c.first_name << "\n"
                 << c.last_name << "\n"

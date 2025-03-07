@@ -9,7 +9,8 @@ void input_handle(const std::string &input)
     else if (input == "SEARCH")
     {
         int indx;
-        std::cout << std::endl << CYAN << "Please input the index of the contact you want to display: " << END;
+        std::cout << std::endl << CYAN <<
+        "Please input the index of the contact you want to display: " << END;
         std::cin >> indx;
         phonebook.search_contact(indx);
     }
@@ -23,13 +24,15 @@ int main(int argc, char *argv[])
 {
     if (argc < 2)
     {
-        std::cout << MAGENTA << "\nEmpty input!\n" << CYAN << "\nCorrect usage: \n./phonebook ADD\n./phonebook SEARCH\n./phonebook EXIT" << END << std::endl;
+        std::cout << MAGENTA << "\nEmpty input!\n" << CYAN << "\nCorrect usage:" <<
+        "\n./phonebook ADD\n./phonebook SEARCH\n./phonebook EXIT\n" << END;
         return 1;
     }
     std::string input = argv[1];
     if (argc != 2 || (input != "ADD" && input != "SEARCH" && input != "EXIT"))
     {
-        std::cout  << MAGENTA << "\nWrong input!\n" << CYAN <<"\nCorrect usage: \n./phonebook ADD\n./phonebook SEARCH\n./phonebook EXIT" << END << std::endl;
+        std::cout  << MAGENTA << "\nWrong input!\n" << CYAN <<"\nCorrect usage:" <<
+        "\n./phonebook ADD\n./phonebook SEARCH\n./phonebook EXIT\n" << END;
         return 1;
     }
     load_contact();
