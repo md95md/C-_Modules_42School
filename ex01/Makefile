@@ -1,30 +1,33 @@
-NAME		=	phonebook
+NAME        =   phonebook
 
-SRCS		=	main.cpp utils.cpp
+SRCS        =   main.cpp utils.cpp contact.cpp
 
-HEADER		=	phonebook.hpp
+HEADER      =   phonebook.hpp
 
-OBJ_DIR		=	build
+OBJ_DIR     =   build
 
-OBJS		=	$(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
+OBJS        =   $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
-INCLUDES	=	-I.
+INCLUDES    =   -I.
 
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g -O0
+CFLAGS      =   -Wall -Wextra -Werror -std=c++98 -g -O0
 
-CC			=	g++
+CC          =   g++
 
-RM			=	rm -rf
+RM          =   rm -rf
 
-YELLOW		=	"\033[1;33m"
-GREEN		=	"\033[1;32m"
-END			=	"\033[0m"
+# Цвета
+CYAN        =   \033[1;36m
+MAGENTA     =   \033[1;35m
+GREEN       =   \033[1;32m
+END         =   \033[0m
 
-.PHONY		:	all clean fclean re
+.PHONY      :   all clean fclean re
 
-all			:	$(NAME)
+all         :   $(NAME)
+	@echo -e "$(GREEN)\nCompilation successful! You can now run ./phonebook\n$(END)"
 
-$(NAME)		:	$(OBJS)
+$(NAME)     :   $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS)
 
 # Компиляция .o файлов в папку build/
@@ -35,13 +38,13 @@ $(OBJ_DIR)/%.o : %.cpp $(HEADER) | $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-clean		:	
+clean       :   
 	@$(RM) $(OBJS)
-	@echo $(YELLOW) "\n'clean' status: DONE\n" $(END)
+	@echo -e "\n'clean' status: DONE\n"
 				
-fclean		: clean
+fclean      : clean
 	@$(RM) $(NAME) $(OBJ_DIR)
-	@echo $(YELLOW) "\n'fclean' status: DONE\n" $(END)
+	@echo -e "$(GREEN)\n'fclean' status: DONE\n$(END)"
 
-re			: fclean all
-	@echo $(GREEN) "\n're' status: DONE\n" $(END)
+re          : fclean all
+	@echo -e "\n're' status: DONE\n"
