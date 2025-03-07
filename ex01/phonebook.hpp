@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <cctype>
+#include <algorithm>
 
 #define CYAN  "\033[1;36m"
 #define MAGENTA  "\033[1;35m"
@@ -28,9 +30,8 @@ class Contact{
 
     Contact(int idx, std::string first, std::string last,
     std::string nick, std::string phone, std::string secret)
-    : index(idx),
-    first_name(first), last_name(last), nickname(nick), phone_number(phone),
-    darkest_secret(secret) {}
+    : index(idx), first_name(first), last_name(last), nickname(nick),
+    phone_number(phone), darkest_secret(secret) {}
     void contact_info() const;
 };
 
@@ -40,7 +41,6 @@ class PhoneBook{
     int contact_count;
 
     PhoneBook() : contact_count(0) {}
-
     void search_contact(int indx);
     void contact_info();
 };

@@ -16,6 +16,8 @@ CC          =   g++
 
 RM          =   rm -rf
 
+CONTACTS_TXT = contacts.txt
+
 CYAN        =   \033[1;36m
 MAGENTA     =   \033[1;35m
 GREEN       =   \033[1;32m
@@ -36,7 +38,7 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 clean       :   
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) $(CONTACTS_TXT)
 	@echo -e "\n'clean' status: DONE\n"
 				
 fclean      : clean

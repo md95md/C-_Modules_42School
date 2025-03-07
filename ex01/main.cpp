@@ -8,6 +8,8 @@ void input_handle(const std::string &input)
     }
     else if (input == "SEARCH")
     {
+        if (phonebook.contact_count == 0)
+            return;
         int indx;
         std::cout << std::endl << CYAN <<
         "Please input the index of the contact you want to display: " << END;
@@ -16,6 +18,8 @@ void input_handle(const std::string &input)
     }
     else if (input == "EXIT")
     {
+        if (phonebook.contact_count == 0)
+            return;
         exit_and_clean_all();
     }
 }
