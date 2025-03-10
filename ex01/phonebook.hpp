@@ -64,10 +64,10 @@ class PhoneBook{
 
     void display_contacts_summary() const
     {
-        std::cout << std::setw(10) << "index" << "|" 
+        std::cout << std::setw(10) << "     index" << "|" 
                   << std::setw(10) << "first name" << "|" 
-                  << std::setw(10) << "last name" << "|" 
-                  << std::setw(10) << "nickname" << std::endl;
+                  << std::setw(10) << " last name" << "|" 
+                  << std::setw(10) << "  nickname" << std::endl;
         for (int i = 0; i < contact_count; i++)
         {
             std::cout << std::setw(10) << contacts[i].index << "|"
