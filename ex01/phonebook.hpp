@@ -15,6 +15,7 @@ void please_input_contact();
 void exit_and_clean_all();
 void load_contact();
 void save_contact();
+void input_handle();
 
 inline std::string truncate_field(const std::string &str)
 {

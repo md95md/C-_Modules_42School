@@ -49,9 +49,10 @@ std::string readAlphaString(const std::string& prompt)
 
 void please_input_contact()
 {
+    
     Contact new_contact;
     new_contact.index = phonebook.contact_count % 8;
-    std::cout << CYAN << "Please input the following information:\n" << END;
+    std::cout << CYAN << "\nPlease input the following information:\n" << END;
     new_contact.first_name = readAlphaString("First Name: ");
     new_contact.last_name  = readAlphaString("Last Name: ");
     new_contact.nickname   = readAlphaString("Nickname: ");
@@ -66,8 +67,10 @@ void please_input_contact()
 void exit_and_clean_all()
 {
     if (std::remove("contacts.txt") == 0) {
-        std::cout << CYAN << "\nPhonebook deleted successfully!\n" << END;
-    } else {
-        std::cout << MAGENTA << "\nError deleting phonebook\n" << END;
+        std::cout << MAGENTA << "\nPhonebook deleted successfully!\n" << END;
+    }
+    else
+    {
+        std::cout << MAGENTA << "\nExited\n" << END;
     }
 }

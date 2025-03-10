@@ -6,7 +6,6 @@ void load_contact()
     if (!infile)
     {
         std::cout << MAGENTA << "\nPhonebook is empty\n" << END << std::endl;
-        return;
     }
     phonebook.contact_count = 0;
     while (phonebook.contact_count < 8 && !infile.eof()) {
@@ -56,23 +55,23 @@ void Contact::contact_info() const{
 
 void PhoneBook::search_contact()
 {
-    if (contact_count == 0) {
-        std::cout << MAGENTA << "Phonebook is empty" << END << std::endl;
-        return;
-    }
-    display_contacts_summary();
-    std::cout << CYAN << "Please input the index of the contact you want to display: " << END;
-    int index;
-    std::cin >> index;
-    if (std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore(10000, '\n');
-        std::cout << MAGENTA << "Invalid input" << END << std::endl;
-        return;
-    }
-    if (index < 0 || index >= contact_count)
-        std::cout << MAGENTA << "There is no contact at this index" << END << std::endl;
-    else
-        contacts[index].display_contact_info();
+        std::cout << CYAN << "Please input the index of the contact you want to display: " << END;
+        int index;
+        std::cin >> index;
+        if (std::cin.fail())
+        {
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            std::cout << MAGENTA << "Invalid input" << END << std::endl;
+
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        if (index < 0 || index >= contact_count)
+        {
+            std::cout << MAGENTA << "There is no contact at this index" << END << std::endl;
+
+        }
+        else
+            display_contacts_summary();
 }
 
