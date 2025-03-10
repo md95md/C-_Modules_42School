@@ -55,23 +55,31 @@ void Contact::contact_info() const{
 
 void PhoneBook::search_contact()
 {
-        std::cout << CYAN << "Please input the index of the contact you want to display: " << END;
-        int index;
+    std::cout << CYAN << "Please input the index of the contact you want to display: " << END;
+    int index;
+    while (true)
+        {
         std::cin >> index;
         if (std::cin.fail())
         {
             std::cin.clear();
             std::cin.ignore(10000, '\n');
             std::cout << MAGENTA << "Invalid input" << END << std::endl;
-
+            continue;
         }
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         if (index < 0 || index >= contact_count)
         {
             std::cout << MAGENTA << "There is no contact at this index" << END << std::endl;
-
+            std::cout << CYAN << "Please input the index of the contact you want to display: " << END;
+            continue;
         }
         else
+        {
             display_contacts_summary();
+            break;
+        }
+
+    }
 }
 

@@ -4,7 +4,7 @@ std::string truncate_field(const std::string &str);
 
 void input_handle()
 {
-    // load_contact();
+    load_contact();
     std::string input;
     while (true)
     {
@@ -40,19 +40,5 @@ void input_handle()
 
 int main()
 {
-    // if (argc < 2)
-    // {
-    //     std::cout << MAGENTA << "\nEmpty input!\n" << CYAN << "\nCorrect usage:" <<
-    //     "\n./phonebook ADD\n./phonebook SEARCH\n./phonebook EXIT\n" << END;
-    //     return 1;
-    // }
-    // std::string input = argv[1];
-    // if (argc != 2 || (input != "ADD" && input != "SEARCH" && input != "EXIT"))
-    // {
-    //     std::cout << "Invalid command. " 
-    //     << "Only ADD, SEARCH or EXIT are accepted." << std::endl;
-    //     return 1;
-    // }
-    // load_contact();
     input_handle();
 }
