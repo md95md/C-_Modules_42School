@@ -1,5 +1,7 @@
 #include "phonebook.hpp"
 
+std::string truncate_field(const std::string &str);
+
 void input_handle(const std::string &input)
 {
     if (input == "ADD")
@@ -14,7 +16,7 @@ void input_handle(const std::string &input)
         std::cout << std::endl << CYAN <<
         "Please input the index of the contact you want to display: " << END;
         std::cin >> indx;
-        phonebook.search_contact(indx);
+        phonebook.search_contact();
     }
     else if (input == "EXIT")
     {

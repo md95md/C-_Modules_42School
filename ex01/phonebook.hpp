@@ -3,6 +3,8 @@
 #include <fstream>
 #include <cctype>
 #include <algorithm>
+#include <iomanip> // std::setw
+#include <limits> // std::numeric_limits
 
 #define CYAN  "\033[1;36m"
 #define MAGENTA  "\033[1;35m"
@@ -11,11 +13,16 @@
 
 void please_input_contact();
 void exit_and_clean_all();
-void contact_info();
-void search_contact(int indx);
-
 void load_contact();
 void save_contact();
+
+inline std::string truncate_field(const std::string &str)
+{
+    if (str.length() > 10)
+        return (str.substr(0, 9) + ".");
+    else
+        return (str);
+}
 
 class Contact{
     public:
@@ -33,6 +40,16 @@ class Contact{
     : index(idx), first_name(first), last_name(last), nickname(nick),
     phone_number(phone), darkest_secret(secret) {}
     void contact_info() const;
+
+    void display_contact_info() const
+    {
+        std::cout << CYAN << "Index: " << index << END << std::endl;
+        std::cout << CYAN << "First Name: " << first_name << END << std::endl;
+        std::cout << CYAN << "Last Name: " << last_name << END << std::endl;
+        std::cout << CYAN << "Nickname: " << nickname << END << std::endl;
+        std::cout << CYAN << "Phone Number: " << phone_number << END << std::endl;
+        std::cout << CYAN << "Darkest Secret: " << darkest_secret << END << std::endl;
+    }
 };
 
 class PhoneBook{
@@ -41,8 +58,23 @@ class PhoneBook{
     int contact_count;
 
     PhoneBook() : contact_count(0) {}
-    void search_contact(int indx);
+    void search_contact();
     void contact_info();
+
+    void display_contacts_summary() const
+    {
+        std::cout << std::setw(10) << "index" << "|" 
+                  << std::setw(10) << "first name" << "|" 
+                  << std::setw(10) << "last name" << "|" 
+                  << std::setw(10) << "nickname" << std::endl;
+        for (int i = 0; i < contact_count; i++)
+        {
+            std::cout << std::setw(10) << contacts[i].index << "|"
+                      << std::setw(10) << truncate_field(contacts[i].first_name) << "|"
+                      << std::setw(10) << truncate_field(contacts[i].last_name) << "|"
+                      << std::setw(10) << truncate_field(contacts[i].nickname) << std::endl;
+        }
+    }
 };
 
 extern PhoneBook phonebook;

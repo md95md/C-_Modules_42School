@@ -10,13 +10,13 @@ std::string readDigitString(const std::string &prompt)
     while (!valid)
     {
         std::cout << prompt;
-        std::cin >> input;
+        std::getline(std::cin, input);
         valid = true;
         for (size_t i = 0; i < input.size(); ++i)
         {
-            if (!std::isdigit(static_cast<unsigned char>(input[i])))
+            if (!std::isdigit(static_cast<unsigned char>(input[i])) && !std::isspace(static_cast<unsigned char>(input[i])))
             {
-                std::cout << MAGENTA << "Wrong input! Please enter digits only\n" << END;
+                std::cout << MAGENTA << "\nWrong input! Please enter digits only\n" << END;
                 valid = false;
                 break;
             }
@@ -32,13 +32,13 @@ std::string readAlphaString(const std::string& prompt)
     while (!valid)
     {
         std::cout << prompt;
-        std::cin >> input;
+        std::getline(std::cin, input);
         valid = true;
         for (size_t i = 0; i < input.size(); ++i)
         {
-            if (!std::isalpha(static_cast<unsigned char>(input[i])))
+            if (!std::isalpha(static_cast<unsigned char>(input[i])) && !std::isspace(static_cast<unsigned char>(input[i])))
             {
-                std::cout << MAGENTA << "Wrong input! Please enter letters only\n" << END;
+                std::cout << MAGENTA << "\nWrong input! Please enter letters only\n" << END;
                 valid = false;
                 break;
             }
@@ -50,18 +50,7 @@ std::string readAlphaString(const std::string& prompt)
 void please_input_contact()
 {
     Contact new_contact;
-    std::string input_string;
-    std::ifstream infile("contacts.txt");
-    // load_contact();
-
-    if (infile.peek() == std::ifstream::traits_type::eof())
-    {
-        new_contact.index = 0;
-    }
-    else
-    {
-        new_contact.index = phonebook.contact_count % 8;
-    }
+    new_contact.index = phonebook.contact_count % 8;
     std::cout << CYAN << "Please input the following information:\n" << END;
     new_contact.first_name = readAlphaString("First Name: ");
     new_contact.last_name  = readAlphaString("Last Name: ");
@@ -71,7 +60,7 @@ void please_input_contact()
     phonebook.contacts[phonebook.contact_count] = new_contact;
     phonebook.contact_count++;
     save_contact();
-    std::cout << CYAN << "Contact added successfully at index " << new_contact.index << " !\n" << END;
+    std::cout << CYAN << "Contact added successfully at index " << new_contact.index << "!\n" << END;
 }
 
 void exit_and_clean_all()

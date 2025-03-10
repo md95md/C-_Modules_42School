@@ -54,13 +54,25 @@ void Contact::contact_info() const{
     std::cout << "Nickname: " << nickname << std::endl;
 };
 
-void PhoneBook::search_contact(int indx){
-    if (indx < 0 || indx >= contact_count)
-    {
-        std::cout << MAGENTA << "There is no contact at this index\n" << END;
+void PhoneBook::search_contact()
+{
+    if (contact_count == 0) {
+        std::cout << MAGENTA << "Phonebook is empty" << END << std::endl;
         return;
     }
-    contacts[indx].contact_info();
-};
-
+    display_contacts_summary();
+    std::cout << CYAN << "Please input the index of the contact you want to display: " << END;
+    int index;
+    std::cin >> index;
+    if (std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        std::cout << MAGENTA << "Invalid input" << END << std::endl;
+        return;
+    }
+    if (index < 0 || index >= contact_count)
+        std::cout << MAGENTA << "There is no contact at this index" << END << std::endl;
+    else
+        contacts[index].display_contact_info();
+}
 
