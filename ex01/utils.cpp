@@ -14,7 +14,7 @@ std::string readDigitString(const std::string &prompt)
         valid = true;
         for (size_t i = 0; i < input.size(); ++i)
         {
-            if (!std::isdigit(static_cast<unsigned char>(input[i])) && !std::isspace(static_cast<unsigned char>(input[i])))
+            if (!std::isdigit(static_cast<unsigned char>(input[i])))
             {
                 std::cout << MAGENTA << "\nWrong input! Please enter digits only\n" << END;
                 valid = false;
@@ -34,11 +34,17 @@ std::string readAlphaString(const std::string& prompt)
         std::cout << prompt;
         std::getline(std::cin, input);
         valid = true;
+        if (input.find_first_not_of(" \t\n\r") == std::string::npos)
+        {
+            std::cout << MAGENTA << "Field can not be empty!\n" << END;
+            continue;
+        }
         for (size_t i = 0; i < input.size(); ++i)
         {
-            if (!std::isalpha(static_cast<unsigned char>(input[i])) && !std::isspace(static_cast<unsigned char>(input[i])))
+            if (!std::isalpha(static_cast<unsigned char>(input[i]))
+            && !std::isspace(static_cast<unsigned char>(input[i])))
             {
-                std::cout << MAGENTA << "\nWrong input! Please enter letters only\n" << END;
+                std::cout << MAGENTA << "Wrong input! Please enter letters only\n" << END;
                 valid = false;
                 break;
             }
@@ -73,4 +79,12 @@ void exit_and_clean_all()
     {
         std::cout << MAGENTA << "\nExited\n" << END;
     }
+}
+
+void handle_sigint(int signal)
+{
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << MAGENTA << "\nSIGINT received. Exiting program." << END;
+    std::exit(signal);
 }

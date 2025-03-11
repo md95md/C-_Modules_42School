@@ -26,7 +26,7 @@ END         =   \033[0m
 .PHONY      :   all clean fclean re
 
 all         :   $(NAME)
-	@echo -e "$(GREEN)\nCompilation successful! You can now run ./phonebook\n$(END)"
+	@echo -e "$(GREEN)\nCompilation successful! You can now run ./phonebook.exe\n$(END)"
 
 $(NAME)     :   $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS)

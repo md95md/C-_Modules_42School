@@ -4,7 +4,10 @@
 #include <cctype>
 #include <algorithm>
 #include <iomanip> // std::setw
-#include <limits> // std::numeric_limits
+#include <csignal>
+#include <cstdlib>
+#include <limits>
+#include <csignal>
 
 #define CYAN  "\033[1;36m"
 #define MAGENTA  "\033[1;35m"
@@ -15,7 +18,7 @@ void please_input_contact();
 void exit_and_clean_all();
 void load_contact();
 void save_contact();
-void input_handle();
+void handle_sigint(int signal);
 
 inline std::string truncate_field(const std::string &str)
 {

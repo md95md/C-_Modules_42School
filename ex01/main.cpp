@@ -8,7 +8,7 @@ void input_handle()
     std::string input;
     while (true)
     {
-        std::cout << "Please input ADD, SEARCH or EXIT: ";
+        std::cout << "Please input ADD | SEARCH | EXIT: ";
         std::getline(std::cin, input);
         if (input == "EXIT")
         {
@@ -23,7 +23,7 @@ void input_handle()
         {
             if (phonebook.contact_count == 0)
             {
-                std::cout << "Phonebook is empty" << std::endl;
+                std::cout << "Phonebook is empty. Try ADD command." << std::endl;
             }
             else
             {
@@ -32,13 +32,25 @@ void input_handle()
         } 
         else
         {
-            std::cout << "Invalid command. " 
-                      << "Only ADD, SEARCH or EXIT are accepted." << std::endl;
+            std::cout << MAGENTA << "\nInvalid command. " 
+                      << "Only ADD | SEARCH | EXIT are accepted." << END << std::endl;
         }
     }
 }
 
-int main()
+int main(int argc, char **argv)
 {
+    if (argc > 1)
+    {
+        std::cout << "Invalid arguments. Usage: ./phonebook" << std::endl;
+        return 1;
+    }
+    if (!argv[0])
+    {
+        std::cout << "Invalid arguments. Usage: ./phonebook" << std::endl;
+        return 1;
+    }
+    std::signal(SIGINT, handle_sigint);
     input_handle();
+    return 0;
 }
