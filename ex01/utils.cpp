@@ -16,7 +16,7 @@ std::string readDigitString(const std::string &prompt)
         {
             if (!std::isdigit(static_cast<unsigned char>(input[i])))
             {
-                std::cout << MAGENTA << "\nWrong input! Please enter digits only\n" << END;
+                std::cout << MAGENTA << "Wrong input! Please enter digits only:\n" << END;
                 valid = false;
                 break;
             }
@@ -37,6 +37,7 @@ std::string readAlphaString(const std::string& prompt)
         if (input.find_first_not_of(" \t\n\r") == std::string::npos)
         {
             std::cout << MAGENTA << "Field can not be empty!\n" << END;
+            valid = false;
             continue;
         }
         for (size_t i = 0; i < input.size(); ++i)
@@ -44,7 +45,7 @@ std::string readAlphaString(const std::string& prompt)
             if (!std::isalpha(static_cast<unsigned char>(input[i]))
             && !std::isspace(static_cast<unsigned char>(input[i])))
             {
-                std::cout << MAGENTA << "Wrong input! Please enter letters only\n" << END;
+                std::cout << MAGENTA << "Wrong input! Please enter letters only:\n" << END;
                 valid = false;
                 break;
             }
@@ -85,6 +86,7 @@ void handle_sigint(int signal)
 {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::remove("contacts.txt");
     std::cout << MAGENTA << "\nSIGINT received. Exiting program." << END;
     std::exit(signal);
 }
