@@ -55,6 +55,7 @@ void Contact::contact_info() const{
 
 void PhoneBook::search_contact()
 {
+    display_contacts_summary();
     std::cout << CYAN << "Please input the index of the contact you want to display: " << END;
     int index;
     while (true)
@@ -76,7 +77,7 @@ void PhoneBook::search_contact()
         }
         else
         {
-            display_contacts_summary();
+            contacts[index].display_contact_info();
             break;
         }
 

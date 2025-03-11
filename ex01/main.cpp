@@ -8,7 +8,7 @@ void input_handle()
     std::string input;
     while (true)
     {
-        std::cout << "Please input ADD | SEARCH | EXIT:";
+        std::cout << "Please input ADD | SEARCH | EXIT: ";
         std::getline(std::cin, input);
         if (input == "EXIT")
         {

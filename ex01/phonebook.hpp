@@ -47,12 +47,12 @@ class Contact{
 
     void display_contact_info() const
     {
-        std::cout << CYAN << "Index: " << index << END << std::endl;
-        std::cout << CYAN << "First Name: " << first_name << END << std::endl;
-        std::cout << CYAN << "Last Name: " << last_name << END << std::endl;
-        std::cout << CYAN << "Nickname: " << nickname << END << std::endl;
-        std::cout << CYAN << "Phone Number: " << phone_number << END << std::endl;
-        std::cout << CYAN << "Darkest Secret: " << darkest_secret << END << std::endl;
+        std::cout << CYAN << "Index: " << END << index  << std::endl;
+        std::cout << CYAN << "First Name: "<< END << first_name << std::endl;
+        std::cout << CYAN << "Last Name: "<< END << last_name <<std::endl;
+        std::cout << CYAN << "Nickname: "<< END << nickname << std::endl;
+        std::cout << CYAN << "Phone Number: "<< END << phone_number << std::endl;
+        std::cout << CYAN << "Darkest Secret: " << END << darkest_secret << std::endl;
     }
 };
 
